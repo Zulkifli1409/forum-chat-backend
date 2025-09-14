@@ -1,5 +1,3 @@
-// full src/src backend/server.js
-
 import express from "express";
 import dotenv from "dotenv";
 import http from "http";
@@ -35,6 +33,7 @@ const app = express();
 const allowedOrigins = [
     "http://localhost:3000",
     "http://192.168.1.13:3000",
+    "https://fortek.vercel.app/",
 ];
 
 const corsOptions = {
@@ -109,7 +108,7 @@ app.use("/api/announcements", announcementRoutes);
 
 
 const server = http.createServer(app);
-export const io = new Server(server, { cors: { origin: "*" } });
+export const io = new Server(server, { cors: { origin: allowedOrigins } });
 
 export let onlineUsers = {};
 
