@@ -34,6 +34,7 @@ const allowedOrigins = [
     "http://localhost:3000",
     "http://192.168.1.13:3000",
     "https://fortek.vercel.app/",
+    "https://fortek-zulkiflis-projects.vercel.app/",
 ];
 
 const corsOptions = {
