@@ -52,7 +52,7 @@ export const login = async (req, res) => {
 
         const refreshToken = jwt.sign(
             { id: user._id },
-            process.env.JWT_REFRESH_SECRET,
+            process.env.REFRESH_TOKEN_SECRET,   // <- ganti ini
             { expiresIn: "7d" }
         );
 
@@ -94,7 +94,7 @@ export const refreshToken = async (req, res) => {
         const storedToken = await RefreshToken.findOne({ token: refreshToken });
         if (!storedToken) return res.status(403).json({ msg: "Invalid refresh token" });
 
-        const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+        const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
 
         const user = await User.findById(decoded.id);
         if (!user) return res.status(404).json({ msg: "User not found" });
