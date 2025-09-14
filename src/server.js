@@ -34,15 +34,17 @@ app.set('trust proxy', 1);
 const allowedOrigins = [
     "http://localhost:3000",
     "http://192.168.1.13:3000",
-    "https://fortek.vercel.app/",
-    "https://fortek-zulkiflis-projects.vercel.app/",
+    "https://fortek.vercel.app",
+    "https://fortek-zulkiflis-projects.vercel.app",
 ];
 
 const corsOptions = {
     origin: (origin, callback) => {
+        console.log("🔍 Request Origin:", origin);
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {
+            console.warn("❌ Blocked by CORS:", origin);
             callback(new Error('Not allowed by CORS'));
         }
     },
