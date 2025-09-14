@@ -29,8 +29,6 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     try {
-        console.log("DEBUG: JWT_SECRET is:", process.env.JWT_SECRET); 
-        console.log("DEBUG: REFRESH_TOKEN_SECRET is:", process.env.REFRESH_TOKEN_SECRET);
         const { nim, password } = req.body;
         const user = await User.findOne({ nim });
         if (!user) return res.status(404).json({ msg: "User not found" });
