@@ -29,6 +29,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
+app.set('trust proxy', 1);
 
 const allowedOrigins = [
     "http://localhost:3000",
@@ -38,11 +39,11 @@ const allowedOrigins = [
 ];
 
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    origin: (origin, callback) => {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {
-            callback(new Error("Not allowed by CORS"));
+            callback(new Error('Not allowed by CORS'));
         }
     },
     credentials: true,
