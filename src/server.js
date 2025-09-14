@@ -66,7 +66,11 @@ app.use(
                 scriptSrc: ["'self'"], // Hanya izinkan skrip dari domain sendiri
                 styleSrc: ["'self'", "'unsafe-inline'"], // Izinkan inline style jika Anda menggunakannya
                 imgSrc: ["'self'", "data:"], // Izinkan gambar dari domain sendiri dan data URI
-                connectSrc: ["'self'"], // Batasi koneksi API hanya ke domain sendiri
+                connectSrc: [
+                    "'self'",
+                    "https://fortek.vercel.app",
+                    "https://fortek-zulkiflis-projects.vercel.app",
+                ],
                 fontSrc: ["'self'"],
                 objectSrc: ["'none'"], // Jangan izinkan plugin seperti Flash
                 frameAncestors: ["'none'"], // Mencegah clickjacking
